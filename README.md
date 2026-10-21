@@ -7,6 +7,15 @@
 - 강의 본문: https://docs.claude-hunt.com
 - 수강생 결과물 공유: https://claude-hunt.com
 
+## 주요 기능
+
+- 할 일 추가 / 완료 / 삭제
+- 우선순위(높음·보통·낮음), 마감일, 카테고리(업무·개인·쇼핑) 지정
+- 상태 필터(전체·진행중·완료), 카테고리 필터, 검색
+- 정렬(생성일순·이름순·마감일순)
+- 다크 모드 지원
+- 데이터는 브라우저 `localStorage` 에 저장되며 별도 서버·DB 가 필요 없습니다.
+
 ## 기술 스택
 
 - Next.js 16 (App Router, Turbopack)
@@ -14,6 +23,7 @@
 - Tailwind CSS v4
 - shadcn/ui (radix-maia 스타일, taupe 베이스)
 - TypeScript / ESLint / Prettier
+- Vitest / Testing Library
 - 패키지 매니저: bun 1.3.6
 
 ## 시작하기
@@ -33,7 +43,18 @@ bun run build      # 프로덕션 빌드
 bun run start      # 빌드 결과 실행
 bun run lint       # ESLint
 bun run typecheck  # tsc --noEmit
+bun run test       # Vitest 1회 실행 (bun test 가 아닌 bun run test 사용)
+bun run test:watch # Vitest 감시 모드
 bun run format     # Prettier 포맷팅
+```
+
+## 프로젝트 구조
+
+```text
+app/         # App Router 페이지·레이아웃 (Server Components 우선)
+components/  # Todo 관련 컴포넌트와 components/ui (shadcn/ui)
+hooks/       # use-todos 등 커스텀 훅 (localStorage 연동)
+lib/         # 타입 정의와 유틸 함수
 ```
 
 ## 챕터별 시작 브랜치
